@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --ifm-color-primary: #6366f1;
+  --ifm-color-primary-dark: #4f46e5;
+  --ifm-color-primary-darker: #4338ca;
+  --ifm-color-primary-darkest: #3730a3;
+  --ifm-color-primary-light: #818cf8;
+  --ifm-color-primary-lighter: #a5b4fc;
+  --ifm-color-primary-lightest: #c7d2fe;
+
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-family: 'Outfit', sans-serif;
+  
+  --ifm-code-font-family: 'Fira Code', 'Courier New', monospace;
+  
+  --scrollbar-thumb: var(--ifm-color-primary);
+  --scrollbar-track: rgba(15, 23, 42, 0.3);
+}
+
+[data-theme='dark'] {
+  --ifm-background-color: #0b0f19;
+  --ifm-navbar-background-color: rgba(11, 15, 25, 0.7);
+  --ifm-footer-background-color: #070a10;
+  --ifm-card-background-color: rgba(255, 255, 255, 0.03);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+/* Scrollbar support for modern and legacy browsers */
+* {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 6px;
+    border: 2px solid transparent;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--ifm-color-primary-light);
+  }
+}
+
+/* Glassmorphism navigation bar */
+.navbar {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background-color 0.3s ease;
+}
+
+/* Glassmorphism panel styling */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Docusaurus Admonitions overrides for modern styling */
+.admonition {
+  border-radius: 12px;
+  border-left-width: 5px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+}

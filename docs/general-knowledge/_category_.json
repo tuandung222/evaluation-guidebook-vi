@@ -1,0 +1,9 @@
+{
+  "label": "Kiến thức Chung",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/general-knowledge",
+    "description": "Các khái niệm cơ bản về suy luận (inference), tokenizer và các nguyên lý cốt lõi trong đánh giá mô hình ngôn ngữ lớn."
+  }
+}

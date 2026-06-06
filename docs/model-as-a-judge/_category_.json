@@ -1,0 +1,9 @@
+{
+  "label": "LLM làm Giám khảo",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/model-as-a-judge",
+    "description": "Phương pháp luận sử dụng mô hình ngôn ngữ lớn làm giám khảo (model-as-a-judge) và tích hợp các mô hình chấm điểm thưởng (reward models)."
+  }
+}

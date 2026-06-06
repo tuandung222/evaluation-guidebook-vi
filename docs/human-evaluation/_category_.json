@@ -1,0 +1,9 @@
+{
+  "label": "Đánh giá bằng Con người",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/human-evaluation",
+    "description": "Hướng dẫn sử dụng người gán nhãn/chấm điểm con người, đo lường độ đồng thuận và cải tiến chất lượng đánh giá."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "label": "Đánh giá Tự động",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/automated-benchmarks",
+    "description": "Tìm hiểu cách thiết kế hệ thống đánh giá tự động (automated evaluation) và cách sử dụng các bộ thử nghiệm (benchmarks)."
+  }
+}
