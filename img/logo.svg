@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Shield Gradient -->
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+    
+    <!-- Shield Highlight/Inner Shadow Gradient -->
+    <linearGradient id="innerGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.2" />
+    </linearGradient>
+
+    <!-- Scale Metallic Gradient -->
+    <linearGradient id="scaleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#e0e7ff" />
+      <stop offset="100%" stop-color="#a5b4fc" />
+    </linearGradient>
+    
+    <!-- Drop Shadow Filter -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Outer Shield -->
+  <path d="M256,32 C350,32 440,65 440,165 C440,315 256,480 256,480 C256,480 72,315 72,165 C72,65 162,32 256,32 Z" 
+        fill="url(#shieldGrad)" 
+        filter="url(#dropShadow)" />
+
+  <!-- Inner Shield Border / Accent -->
+  <path d="M256,48 C335,48 410,75 410,160 C410,290 256,440 256,440 C256,440 102,290 102,160 C102,75 177,48 256,48 Z" 
+        fill="none" 
+        stroke="url(#innerGlow)" 
+        stroke-width="8" 
+        stroke-linecap="round"
+        opacity="0.8" />
+
+  <!-- Glow Effect on Shield Left Side -->
+  <path d="M256,48 C177,48 102,75 102,160 C102,290 256,440 256,440 L256,48 Z" 
+        fill="#ffffff" 
+        opacity="0.05" />
+
+  <!-- ================= SCALE / BALANCE ================= -->
+  <g transform="translate(0, 15)">
+    <!-- Base of the scale -->
+    <path d="M200,380 L312,380 C325,380 330,370 320,365 L300,355 L212,355 L192,365 C182,370 187,380 200,380 Z" 
+          fill="url(#scaleGrad)" />
+    <rect x="244" y="340" width="24" height="15" rx="4" fill="url(#scaleGrad)" />
+
+    <!-- Central Pillar -->
+    <rect x="248" y="160" width="16" height="180" rx="4" fill="url(#scaleGrad)" />
+    <circle cx="256" cy="150" r="16" fill="url(#scaleGrad)" />
+    <!-- Small top pointer -->
+    <polygon points="256,110 250,134 262,134" fill="url(#scaleGrad)" />
+
+    <!-- Main Cross Beam (Pivot/Arm) -->
+    <path d="M120,170 C160,162 210,160 256,164 C302,160 352,162 392,170 C402,172 402,188 392,190 C352,198 302,200 256,196 C210,200 160,198 120,190 C110,188 110,172 120,170 Z" 
+          fill="url(#scaleGrad)" />
+    
+    <!-- Central Pivot Cap -->
+    <circle cx="256" cy="180" r="12" fill="#312e81" stroke="url(#scaleGrad)" stroke-width="4" />
+
+    <!-- Left Side Scale (Balanced) -->
+    <!-- Hanging Strings -->
+    <line x1="126" y1="184" x2="86" y2="280" stroke="url(#scaleGrad)" stroke-width="3" />
+    <line x1="126" y1="184" x2="166" y2="280" stroke="url(#scaleGrad)" stroke-width="3" />
+    <!-- Pan -->
+    <path d="M76,280 L176,280 C176,280 176,310 126,310 C76,310 76,280 76,280 Z" fill="url(#scaleGrad)" />
+    <!-- Weight decoration on left pan -->
+    <circle cx="126" cy="270" r="8" fill="#312e81" opacity="0.6" />
+
+    <!-- Right Side Scale (Balanced) -->
+    <!-- Hanging Strings -->
+    <line x1="386" y1="184" x2="346" y2="280" stroke="url(#scaleGrad)" stroke-width="3" />
+    <line x1="386" y1="184" x2="426" y2="280" stroke="url(#scaleGrad)" stroke-width="3" />
+    <!-- Pan -->
+    <path d="M336,280 L436,280 C436,280 436,310 386,310 C336,310 336,280 336,280 Z" fill="url(#scaleGrad)" />
+    <!-- Weight decoration on right pan -->
+    <circle cx="386" cy="270" r="8" fill="#312e81" opacity="0.6" />
+  </g>
+</svg>
