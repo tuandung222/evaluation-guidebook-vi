@@ -120,6 +120,25 @@ Tránh lỗi parse MDX đối với các ký tự `<` và `>` bên ngoài các k
 ### 3.4. Liên kết nội bộ (Links)
 Đồng bộ hóa các liên kết nội bộ theo cấu trúc thư mục mới của Docusaurus tiếng Việt, sử dụng tương đối (relative paths) và tên file không dấu dạng `snake_case`.
 
+### 3.5. Cấu hình Slug cho Danh mục (Category Slugs)
+Để tránh Docusaurus v4 tự động sinh slug bằng tiếng Việt có dấu/gạch nối bị lỗi liên kết (ví dụ `/docs/category/kiến-thức-chung`), mọi file `_category_.json` phải định nghĩa rõ ràng `slug` tiếng Anh không dấu dạng `kebab-case`.
+Ví dụ:
+```json
+{
+  "label": "Kiến thức Chung",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/general-knowledge"
+  }
+}
+```
+
+### 3.6. Độ phân giải Liên kết Markdown (Markdown Link Resolution)
+Hạn chế sử dụng liên kết tương đối trỏ trực tiếp đến file `.md` vật lý (ví dụ: `../troubleshooting/troubleshooting_reproducibility.md`) vì Docusaurus có thể báo lỗi link gãy trong quá trình build nếu đường dẫn thay đổi hoặc chứa ký tự đặc biệt.
+* **Quy chuẩn:** Thay thế bằng đường dẫn URL tuyệt đối bắt đầu bằng `/docs/` (ví dụ: `/docs/troubleshooting/troubleshooting_reproducibility` - lưu ý loại bỏ phần mở rộng `.md`).
+
+
 ---
 
 ## 4. Phân chia Chương và Tên tệp tin (Naming Convention)
@@ -170,7 +189,9 @@ docs/
 
 Từng agent dịch thuật và QA phải thực hiện kiểm duyệt trước khi đẩy mã nguồn:
 - [ ] Tệp tin có đầy đủ phần YAML frontmatter và hiển thị chính xác trên thanh điều hướng.
-- [ ] Không chứa ký tự `<` hoặc `>` trần ngoài code block.
+- [ ] Không chứa ký tự `<` hoặc `>` trần ngoài code block (sử dụng `&lt;` và `&gt;`).
 - [ ] Giữ nguyên 100% công thức toán học LaTeX và các khối mã nguồn gốc.
 - [ ] Các thuật ngữ kỹ thuật tuân thủ Glossary trong phần 2.
-- [ ] Chạy `npm run build` thành công, không có cảnh báo về link gãy hay lỗi cú pháp MDX.
+- [ ] Mọi liên kết nội bộ hướng đến đúng URL dạng `/docs/path/to/page` (không dùng đuôi `.md` nếu dùng link tuyệt đối của trang).
+- [ ] Đảm bảo tất cả danh mục đều có file `_category_.json` với trường `slug` tiếng Anh.
+- [ ] Chạy `npm run build` thành công, đạt kết quả **0 warnings và 0 errors** liên quan đến broken links hay MDX parsing trước khi push lên main.
