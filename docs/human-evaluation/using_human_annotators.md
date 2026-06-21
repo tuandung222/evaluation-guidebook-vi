@@ -5,34 +5,34 @@ sidebar_label: 'Người chấm điểm Con người'
 
 # Sử dụng người chấm điểm con người
 
-Chúng tôi khuyên bạn nên đọc Phần 3 của [bài tổng quan (review)](https://aclanthology.org/2024.cl-3.1/) này về các phương pháp hay (best practices) để đảm bảo chất lượng gán nhãn dữ liệu. Nếu bạn muốn đạt được chất lượng ở cấp độ sản xuất thực tế (production level) và có đủ điều kiện để triển khai tất cả các phương pháp này, hãy thực hiện ngay! 
+Tôi khuyên bạn nên đọc Phần 3 của [bài tổng quan](https://aclanthology.org/2024.cl-3.1/) này về các best practice khi đảm bảo chất lượng gán nhãn dữ liệu. Nếu bạn muốn đạt chất lượng production và có đủ điều kiện triển khai tất cả các phương pháp này, hãy làm ngay!
 
 ![Best_annotation_practices](https://github.com/huggingface/evaluation-guidebook/blob/main/assets/best_annotation_practices.png?raw=true)
 
-Tuy nhiên, dưới đây là các hướng dẫn quan trọng (bất kể quy mô dự án của bạn là gì) sau khi bạn đã xác định được nhiệm vụ và hướng dẫn chấm điểm của mình:
+Dưới đây là các hướng dẫn quan trọng (bất kể quy mô dự án) sau khi bạn đã xác định được tác vụ và hướng dẫn chấm điểm:
 
-- **Lựa chọn nhân sự, và nếu có thể, hãy có cơ chế khuyến khích bằng tài chính**
-  Bạn có thể muốn những người thực hiện nhiệm vụ của mình:
-  1) Đạt được một số đặc điểm nhân khẩu học nhất định.
-     Một số ví dụ: là người bản xứ của ngôn ngữ mục tiêu, có trình độ học vấn cao hơn, là chuyên gia trong một lĩnh vực cụ thể, có nguồn gốc địa lý đa dạng, v.v. 
-     Nhu cầu của bạn sẽ khác nhau tùy thuộc vào từng nhiệm vụ.
+- **Lựa chọn nhân sự, và nếu có thể, có cơ chế khuyến khích tài chính**
+  Bạn có thể muốn người thực hiện nhiệm vụ:
+  1) Đạt một số đặc điểm nhân khẩu học nhất định.
+     Ví dụ: là người bản ngữ của ngôn ngữ mục tiêu, có trình độ học vấn cao hơn, là chuyên gia trong lĩnh vực cụ thể, có đa dạng nguồn gốc địa lý, v.v.
+     Nhu cầu cụ thể sẽ khác nhau theo từng tác vụ.
   2) Tạo ra công việc chất lượng cao.
-     Đặc biệt quan trọng hiện nay là thêm một cách để kiểm tra xem các câu trả lời có phải do LLM tạo ra hay không, và bạn sẽ cần phải lọc bớt một số người chấm điểm (annotator) ra khỏi danh sách của mình.
-     *Theo quan điểm của chúng tôi, trừ khi bạn trông cậy vào những người chấm điểm cộng đồng (crowdsourced) có động lực cực kỳ cao, việc chi trả thù lao xứng đáng cho người chấm điểm luôn là lựa chọn tốt hơn.*
+     Đặc biệt quan trọng hiện nay là thêm cơ chế kiểm tra xem câu trả lời có phải do LLM tạo không — và bạn sẽ cần loại bỏ một số người chấm điểm.
+     *Theo quan điểm của chúng tôi, trừ khi bạn dựa vào crowdsourced annotator có động lực rất cao, trả thù lao xứng đáng luôn là lựa chọn tốt hơn.*
 
-- **Thiết kế hướng dẫn (guideline design)** 
-  Hãy chắc chắn dành nhiều thời gian để thực sự động não (brainstorm) các tài liệu hướng dẫn của bạn! Đó là một trong những điểm mà chúng tôi đã dành nhiều thời gian nhất đối với dataset [GAIA](https://huggingface.co/gaia-benchmark).
+- **Thiết kế hướng dẫn**
+  Hãy dành nhiều thời gian để thực sự brainstorm các hướng dẫn của bạn! Đây là một trong những điểm chúng tôi đầu tư nhiều thời gian nhất khi xây dựng dataset [GAIA](https://huggingface.co/gaia-benchmark).
 
-- **Gán nhãn lặp lại (iterative annotation)** 
-  Hãy chuẩn bị tinh thần để thực hiện nhiều vòng gán nhãn/chấm điểm, vì người chấm điểm có thể sẽ hiểu sai hướng dẫn của bạn (chúng thường mơ hồ hơn bạn nghĩ)! Việc tạo các mẫu thử nghiệm nhiều lần sẽ giúp người chấm điểm thực sự hội tụ về những gì bạn cần.
+- **Gán nhãn lặp lại (iterative annotation)**
+  Hãy chuẩn bị tinh thần cho nhiều vòng gán nhãn/chấm điểm, vì người chấm điểm có thể hiểu sai hướng dẫn của bạn — chúng thường mơ hồ hơn bạn nghĩ! Tạo nhiều mẫu thử nghiệm sẽ giúp người chấm điểm hội tụ về những gì bạn thực sự cần.
 
-- **Đánh giá chất lượng** và **Chọn lọc thủ công (manual curation)**
-  Bạn cần kiểm soát các câu trả lời (đặc biệt là thông qua độ đồng thuận giữa các người chấm điểm (inter-annotator agreement) nếu có thể) và thực hiện lựa chọn cuối cùng để giữ lại những câu trả lời có chất lượng cao nhất/phù hợp nhất.
+- **Đánh giá chất lượng** và **Chọn lọc thủ công**
+  Bạn cần kiểm soát các câu trả lời (đặc biệt qua inter-annotator agreement nếu có thể) và thực hiện lựa chọn cuối cùng để giữ lại những câu trả lời chất lượng cao/phù hợp nhất.
 
-Các công cụ chuyên dụng để xây dựng các dataset đã được gán nhãn chất lượng cao như [Argilla](https://argilla.io/) cũng có thể hỗ trợ bạn. 
+Các công cụ chuyên dụng như [Argilla](https://argilla.io/) cũng có thể hỗ trợ bạn xây dựng dataset được gán nhãn chất lượng cao.
 
 ### Đọc thêm
-- ⭐ [How to set up your own annotator platform in a couple minutes](https://huggingface.co/learn/cookbook/enterprise_cookbook_argilla), bởi Moritz Laurer. Một bài đọc bổ ích để có trải nghiệm thực tế khi sử dụng các công cụ nguồn mở (như Argilla và Hugging Face), đồng thời hiểu rõ hơn về những điều nên làm và không nên làm khi gán nhãn bằng con người ở quy mô lớn.
-- ⭐ [A guide on annotation good practices](https://aclanthology.org/2024.cl-3.1/). Đây là một bài đánh giá tổng quan về tất cả các bài nghiên cứu liên quan đến gán nhãn bằng con người kể từ năm 2023, và nó rất đầy đủ. Tuy có hơi dày đặc thông tin nhưng rất dễ hiểu.
-- [Another guide on annotation good practices](https://scale.com/guides/data-labeling-annotation-guide), bởi ScaleAI, đơn vị chuyên về đánh giá bằng con người. Đây là một tài liệu bổ sung gọn nhẹ hơn cho tài liệu ở trên.
-- [Assumptions and Challenges of Capturing Human Labels](https://aclanthology.org/2024.naacl-long.126/) là một bài báo nghiên cứu về cách nhìn nhận nguồn gốc gây ra sự bất đồng ý kiến giữa các người chấm điểm và cách giảm thiểu chúng trong thực tế.
+- ⭐ [How to set up your own annotator platform in a couple minutes](https://huggingface.co/learn/cookbook/enterprise_cookbook_argilla), bởi Moritz Laurer — hữu ích để có trải nghiệm thực tế với các công cụ mã nguồn mở (Argilla và Hugging Face), đồng thời hiểu rõ những điều nên và không nên làm khi gán nhãn bằng con người ở quy mô lớn.
+- ⭐ [A guide on annotation good practices](https://aclanthology.org/2024.cl-3.1/) — tổng quan toàn diện về tất cả nghiên cứu liên quan đến gán nhãn bằng con người từ năm 2023. Có hơi dày đặc nhưng rất dễ hiểu.
+- [Another guide on annotation good practices](https://scale.com/guides/data-labeling-annotation-guide), bởi ScaleAI — tài liệu bổ sung ngắn gọn hơn cho tài liệu trên.
+- [Assumptions and Challenges of Capturing Human Labels](https://aclanthology.org/2024.naacl-long.126/) — nghiên cứu về cách nhìn nhận nguyên nhân gây bất đồng giữa người chấm điểm và cách giảm thiểu trong thực tế.

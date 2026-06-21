@@ -5,16 +5,16 @@ sidebar_label: 'Khắc phục lỗi Phân tích Toán'
 
 # Sử dụng LaTeX để đánh giá năng lực Toán học
 
-Phân tích cú pháp (parsing) LaTeX là một việc khó khăn. Đây là một vấn đề lớn khi đánh giá một mô hình mà đầu ra mong đợi ở định dạng $\LaTeX$. Trường hợp này xảy ra đối với [bộ thử nghiệm (benchmark) MATH](https://huggingface.co/datasets/lighteval/MATH).
+Parsing LaTeX là một việc khó khăn. Đây là vấn đề lớn khi đánh giá mô hình có đầu ra ở định dạng $\LaTeX$, chẳng hạn như benchmark [MATH](https://huggingface.co/datasets/lighteval/MATH).
 
-Bộ thử nghiệm này sử dụng $\LaTeX$ để biểu diễn các ký hiệu và phép tính toán học. Việc đánh giá tác vụ này về mặt lý thuyết chỉ là phân tích cú pháp và so sánh nhãn chuẩn/sự thật khách quan (ground truth) với đầu ra của mô hình. Tuy nhiên, thực tế chỉ ra rằng không có cách nào hoàn hảo để phân tích cú pháp $\LaTeX$:
+Benchmark này dùng $\LaTeX$ để biểu diễn các ký hiệu và phép tính toán học. Về mặt lý thuyết, việc đánh giá chỉ đơn giản là parse và so sánh ground truth với đầu ra của mô hình. Tuy nhiên, thực tế chỉ ra rằng không có cách nào parse $\LaTeX$ một cách hoàn hảo:
 
 ![](https://github.com/huggingface/evaluation-guidebook/blob/main/assets/sympy_doc.png?raw=true)
 *Trích từ tài liệu hướng dẫn của [`sympy`](https://github.com/sympy/sympy)*
 
-lm-evaluation-harness sử dụng [`sympy`](https://github.com/sympy/sympy) (một thư viện Python cho toán học ký hiệu) để phân tích cú pháp LaTeX và so sánh các biểu thức.
-Khi sử dụng `sympy` để thử phân tích cú pháp các nhãn chuẩn (so sánh nhãn chuẩn với chính nó), chúng ta chỉ đạt được độ chính xác (accuracy) khoảng 0.94.
-Tại sao lại như vậy? Hóa ra, `sympy` không thể phân tích cú pháp một số biểu thức $\LaTeX$ (dù các biểu thức này hoàn toàn đúng cú pháp).
+lm-evaluation-harness dùng [`sympy`](https://github.com/sympy/sympy) (thư viện Python cho toán học ký hiệu) để parse LaTeX và so sánh các biểu thức.
+Khi dùng `sympy` để thử parse các nhãn chuẩn (so sánh nhãn chuẩn với chính nó), chúng tôi chỉ đạt accuracy khoảng 0.94.
+Tại sao vậy? Hóa ra `sympy` không thể parse một số biểu thức $\LaTeX$ hợp lệ.
 
 Ví dụ:
 
@@ -38,7 +38,7 @@ couldn't parse one of -\frac{1}{{}2x} or -\frac{1}{{}2x}, I don't understand thi
 
 ### Làm thế nào để giải quyết vấn đề này?
 
-Bạn có thể viết lại [ngữ pháp (grammar)](https://github.com/sympy/sympy/blob/master/sympy/parsing/latex/lark/grammar/latex.lark) LaTeX, thêm các tính năng cần thiết vào mã nguồn, hoặc thêm các kiểm tra thủ công vào mã nguồn của bạn để cải thiện điểm số của mô hình. Sau khi suýt sa vào một "hố thỏ" (rabbit hole) sâu không đáy, chúng tôi quyết định rằng việc thêm các kiểm tra so sánh chuỗi (string comparison) vào mã nguồn của mình là giải pháp đủ tốt.
+Bạn có thể viết lại [ngữ pháp LaTeX](https://github.com/sympy/sympy/blob/master/sympy/parsing/latex/lark/grammar/latex.lark), thêm tính năng cần thiết vào code, hoặc thêm các kiểm tra thủ công để cải thiện điểm số của mô hình. Sau khi suít rơi vào rabbit hole, chúng tôi quyết định thêm các kiểm tra string comparison vào code là giải pháp đủ tốt.
 
 ![Bản vá lỗi cho LM Evaluation Harness](https://github.com/huggingface/evaluation-guidebook/blob/main/assets/lm_eval_diff.png?raw=true)
 *Bản vá lỗi cho LM Evaluation Harness*

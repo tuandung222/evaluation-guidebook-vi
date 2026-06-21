@@ -7,7 +7,7 @@ sidebar_label: 'Bộ dữ liệu Đánh giá'
 
 Nếu tác vụ bạn đang quan tâm đã được nghiên cứu kỹ lưỡng, nhiều khả năng đã có sẵn một bộ dữ liệu dành cho tác vụ đó.
 
-Dưới đây là một số bộ dữ liệu đánh giá (evaluation datasets) đã được phát triển trong vài năm qua.
+Dưới đây là một số evaluation dataset đã được phát triển trong vài năm qua.
 
 Tuy nhiên, hãy lưu ý:
 - Một số bộ dữ liệu có thể đã lỗi thời, vì chúng được thiết kế trước kỷ nguyên LLM và hiện nay có thể bị giải quyết rất dễ dàng: chúng thường nhằm mục đích nghiên cứu một đặc tính cụ thể của văn bản (dịch thuật, tóm tắt), vốn không còn là cách chúng ta đánh giá mô hình ngày nay (các bài đánh giá hiện nay mang tính tổng quát/toàn diện hơn).
